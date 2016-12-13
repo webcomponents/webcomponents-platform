@@ -20,6 +20,6 @@
   },
   "homepage": "http://webcomponents.org",
   "devDependencies": {
-    "web-component-tester": "^4.0.1"
+    "web-component-tester": "^5.0.0"
   }
 }

@@ -7,12 +7,12 @@ constructable `CustomEvent` and basic ES6 shims (`Object.assign` and `Array.from
 The polyfills are intended to work in the latest versions of evergreen browsers. See below
 for our complete browser support matrix:
 
-| Polyfill   | IE10 | IE11+ | Chrome* | Firefox* | Safari 7+* | Chrome Android* | Mobile Safari* |
-| ---------- |:----:|:-----:|:-------:|:--------:|:----------:|:---------------:|:--------------:|
-| Custom Elements | ✓  | ✓ | ✓ | ✓ | ✓ | ✓| ✓ |
-| HTML Imports | ✓ | ✓ | ✓ | ✓ | ✓| ✓| ✓ |
-| Shadow DOM | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Templates | ✓ | ✓ | ✓ | ✓| ✓ | ✓ | ✓ |
+| Polyfill   | IE11+ | Chrome* | Firefox* | Safari 9+* | Chrome Android* | Mobile Safari* |
+| ---------- |:-----:|:-------:|:--------:|:----------:|:---------------:|:--------------:|
+| Custom Elements | ✓ | ✓ | ✓ | ✓ | ✓| ✓ |
+| HTML Imports | ✓ | ✓ | ✓ | ✓| ✓| ✓ |
+| Shadow DOM | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Templates | ✓ | ✓ | ✓| ✓ | ✓ | ✓ |
 
 ## Contribute
 
@@ -22,4 +22,4 @@ See the [contributing guide](CONTRIBUTING.md)
 
 Everything in this repository is BSD style license unless otherwise specified.
 
-Copyright (c) 2015 The Polymer Authors. All rights reserved.
+Copyright (c) 2016 The Polymer Authors. All rights reserved.
