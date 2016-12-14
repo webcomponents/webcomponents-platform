@@ -19,7 +19,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <script>
   suite('WebComponents-Platform utils', function() {
     test('CustomEvent constructor', function() {
-      assert.isFunction(window.CustomEvent);
       var detail = {};
       var e = new CustomEvent('foo', {bubbles: true, cancelable: true, detail: detail});
       assert(e);
@@ -37,7 +36,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     });
 
     test('Event constructor', function() {
-      assert.isFunction(window.Event);
       var e = new Event('foo', {bubbles: true, cancelable: true});
       assert(e);
       assert.equal(e.type, 'foo');
