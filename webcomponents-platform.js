@@ -92,7 +92,7 @@
 
   // ES6 stuff
   if (!Array.from) {
-    Array.from = function (object) {
+    Array.from = function(object) {
       return [].slice.call(object);
     };
   }
@@ -100,7 +100,7 @@
   if (!Object.assign) {
     var assign = function(target, source) {
       var n$ = Object.getOwnPropertyNames(source);
-      for (var i=0, p; i < n$.length; i++) {
+      for (var i = 0, p; i < n$.length; i++) {
         p = n$[i];
         target[p] = source[p];
       }
@@ -108,13 +108,82 @@
 
     Object.assign = function(target, sources) {
       var args = [].slice.call(arguments, 1);
-      for (var i=0, s; i < args.length; i++) {
+      for (var i = 0, s; i < args.length; i++) {
         s = args[i];
         if (s) {
           assign(target, s);
         }
       }
       return target;
+    }
+  }
+
+  defineParentNodeProperties(Document);
+  defineParentNodeProperties(DocumentFragment);
+
+  /** 
+   * Defines the `ParentNode` properties on the constructor prototype.
+   * https://developer.mozilla.org/en-US/docs/Web/API/ParentNode
+   */
+  function defineParentNodeProperties(constructor) {
+    if ('firstElementChild' in constructor.prototype === false) {
+      Object.defineProperty(constructor.prototype, 'firstElementChild', {
+        get: function() {
+          var child = this.firstChild;
+          while (child && child.nodeType !== Node.ELEMENT_NODE) {
+            child = child.nextSibling;
+          }
+          return child;
+        },
+        configurable: true,
+        enumerable: true
+      });
+    }
+
+    if ('lastElementChild' in constructor.prototype === false) {
+      Object.defineProperty(constructor.prototype, 'lastElementChild', {
+        get: function() {
+          var child = this.childNodes[this.childNodes.length - 1];
+          while (child && child.nodeType !== Node.ELEMENT_NODE) {
+            child = child.previousSibling;
+          }
+          return child;
+        },
+        configurable: true,
+        enumerable: true
+      });
+    }
+
+    if ('children' in constructor.prototype === false) {
+      Object.defineProperty(constructor.prototype, 'children', {
+        get: function() {
+          var child = this.firstElementChild,
+            children = [];
+          while (child) {
+            children.push(child);
+            child = child.nextElementSibling;
+          }
+          return children;
+        },
+        configurable: true,
+        enumerable: true
+      });
+    }
+
+    if ('childElementCount' in constructor.prototype === false) {
+      Object.defineProperty(constructor.prototype, 'childElementCount', {
+        get: function() {
+          var child = this.firstElementChild,
+            count = 0;
+          while (child) {
+            count++;
+            child = child.nextElementSibling;
+          }
+          return count;
+        },
+        configurable: true,
+        enumerable: true
+      });
     }
   }
 

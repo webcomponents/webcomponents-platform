@@ -64,6 +64,33 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       // call again, just in case
       assert.doesNotThrow(function() {e.preventDefault(); });
     });
+
+    test('Document ParentNode properties', function(){
+      assert.isOk(document.firstElementChild, 'firstElementChild ok');
+      assert.isOk(document.lastElementChild, 'lastElementChild ok');
+      assert.notEqual(document.children.length, 0, 'children ok');
+      assert.notEqual(document.childElementCount, 0, 'childElementCount ok');
+    });
+
+    test('DocumentFragment ParentNode properties', function(){
+      var f = document.createDocumentFragment();
+      var d = document.createElement('div');
+      var i = document.createElement('input');
+      var p = document.createElement('p');
+      f.appendChild(document.createTextNode('first!'));
+      f.appendChild(d);
+      f.appendChild(i);
+      f.appendChild(document.createTextNode('mid!'));
+      f.appendChild(p);
+      f.appendChild(document.createTextNode('last!'));
+      assert.equal(f.firstElementChild, d, 'firstElementChild ok');
+      assert.equal(f.lastElementChild, p, 'lastElementChild ok');
+      assert.equal(f.children.length, 3, 'children ok');
+      assert.equal(f.children[0], d, 'children[0] ok');
+      assert.equal(f.children[1], i, 'children[1] ok');
+      assert.equal(f.children[2], p, 'children[2] ok');
+      assert.isOk(f.childElementCount, 3, 'childElementCount ok');
+    });
   });
 </script>
 </body>
