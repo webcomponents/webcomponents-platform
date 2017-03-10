@@ -1,0 +1,30 @@
+{
+  "name": "webcomponents-platform",
+  "version": "1.0.0-rc.1",
+  "description": "Basic platform polyfills needed by webcomponents.js",
+  "main": "webcomponents-platform.js",
+  "authors": [
+    "The Polymer Authors"
+  ],
+  "license": "BSD-3-Clause",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/webcomponents/webcomponents-platform.git"
+  },
+  "keywords": [
+    "webcomponents",
+    "web-components"
+  ],
+  "homepage": "https://webcomponents.org/polyfills",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "CONTRIBUTING.md"
+  ],
+  "devDependencies": {
+    "web-component-tester": "^5.0.0"
+  }
+}
