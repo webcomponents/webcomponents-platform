@@ -22,5 +22,5 @@
   "devDependencies": {
     "web-component-tester": "^5.0.0"
   },
-  "publishConfig" : { "scope": "public" }
+  "publishConfig" : { "access": "public" }
 }
