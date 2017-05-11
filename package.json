@@ -1,6 +1,6 @@
 {
   "name": "@webcomponents/webcomponents-platform",
-  "version": "1.0.0-rc.3",
+  "version": "1.0.0",
   "description": "Basic platform polyfills needed by webcomponents.js",
   "main": "webcomponents-platform.js",
   "directories": {
