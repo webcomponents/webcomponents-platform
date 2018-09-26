@@ -16,11 +16,17 @@
     "url": "https://github.com/webcomponents/webcomponents-platform/issues"
   },
   "scripts": {
-    "test": "wct"
+    "build": "gulp",
+    "test": "wct",
+    "prepack": "npm run build"
   },
   "homepage": "http://webcomponents.org",
   "devDependencies": {
-    "web-component-tester": "^5.0.0"
+    "google-closure-compiler": "^20180910.0.0",
+    "gulp": "^4.0.0",
+    "gulp-sourcemaps": "^2.6.4",
+    "wct-browser-legacy": "^1.0.0",
+    "web-component-tester": "^6.8.0"
   },
   "publishConfig": {
     "access": "public"

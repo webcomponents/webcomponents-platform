@@ -44,6 +44,10 @@
   // Event constructor shim
   if (!window.Event || isIE && (typeof window.Event !== 'function')) {
     var origEvent = window.Event;
+    /**
+     * @param {!string} inType
+     * @param {?(EventInit)=} params
+     */
     window.Event = function(inType, params) {
       params = params || {};
       var e = document.createEvent('Event');
@@ -60,6 +64,11 @@
 
   // CustomEvent constructor shim
   if (!window.CustomEvent || isIE && (typeof window.CustomEvent !== 'function')) {
+    /**
+     * @template T
+     * @param {!string} inType
+     * @param {?(CustomEventInit<T>)=} params
+     */
     window.CustomEvent = function(inType, params) {
       params = params || {};
       var e = document.createEvent('CustomEvent');
@@ -71,6 +80,11 @@
 
   if (!window.MouseEvent || isIE && (typeof window.MouseEvent !== 'function')) {
     var origMouseEvent = window.MouseEvent;
+    /**
+     *
+     * @param {!string} inType
+     * @param {?(MouseEventInit)=} params
+     */
     window.MouseEvent = function(inType, params) {
       params = params || {};
       var e = document.createEvent('MouseEvent');
@@ -93,7 +107,7 @@
   // ES6 stuff
   if (!Array.from) {
     Array.from = function (object) {
-      return [].slice.call(object);
+      return [].slice.call(/** @type {IArrayLike} */(object));
     };
   }
 
