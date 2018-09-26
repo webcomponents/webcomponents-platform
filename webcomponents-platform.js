@@ -8,7 +8,7 @@
  * subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
  */
 
-(function(scope) {
+(function() {
 
   'use strict';
 
@@ -41,17 +41,6 @@
 
   var isIE = /Trident/.test(navigator.userAgent);
 
-  // CustomEvent constructor shim
-  if (!window.CustomEvent || isIE && (typeof window.CustomEvent !== 'function')) {
-    window.CustomEvent = function(inType, params) {
-      params = params || {};
-      var e = document.createEvent('CustomEvent');
-      e.initCustomEvent(inType, Boolean(params.bubbles), Boolean(params.cancelable), params.detail);
-      return e;
-    };
-    window.CustomEvent.prototype = window.Event.prototype;
-  }
-
   // Event constructor shim
   if (!window.Event || isIE && (typeof window.Event !== 'function')) {
     var origEvent = window.Event;
@@ -65,8 +54,19 @@
       for (var i in origEvent) {
         window.Event[i] = origEvent[i];
       }
+      window.Event.prototype = origEvent.prototype;
     }
-    window.Event.prototype = origEvent.prototype;
+  }
+
+  // CustomEvent constructor shim
+  if (!window.CustomEvent || isIE && (typeof window.CustomEvent !== 'function')) {
+    window.CustomEvent = function(inType, params) {
+      params = params || {};
+      var e = document.createEvent('CustomEvent');
+      e.initCustomEvent(inType, Boolean(params.bubbles), Boolean(params.cancelable), params.detail);
+      return e;
+    };
+    window.CustomEvent.prototype = window.Event.prototype;
   }
 
   if (!window.MouseEvent || isIE && (typeof window.MouseEvent !== 'function')) {
@@ -118,4 +118,4 @@
     }
   }
 
-})(window.WebComponents);
+})();
